@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101429">
+  <title>Bloques — un juego de puzle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scenery" aria-hidden="true">
+    <img class="scene active" src="https://images.unsplash.com/photo-1773904594956-ca7fddc761b4?auto=format&amp;fit=crop&amp;fm=jpg&amp;q=80&amp;w=2400" alt="">
+    <img class="scene" src="https://images.unsplash.com/photo-1693691437838-62dfb46ae50e?auto=format&amp;fit=crop&amp;fm=jpg&amp;q=80&amp;w=2400" alt="">
+    <img class="scene" src="https://images.unsplash.com/photo-1562446126-e755fc77fa42?auto=format&amp;fit=crop&amp;fm=jpg&amp;q=80&amp;w=2400" alt="">
+    <img class="scene" src="https://images.unsplash.com/photo-1635179050929-819cff22b577?auto=format&amp;fit=crop&amp;fm=jpg&amp;q=80&amp;w=2400" alt="">
+  </div>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Bloques, inicio"><span class="brand-mark">▦</span><span>BLOQUES</span></a>
+      <button id="playlistToggle" class="icon-button playlist-button" aria-label="Mostrar mi playlist de Spotify" title="Mi playlist">▶</button>
+      <button id="soundToggle" class="icon-button" aria-label="Activar o desactivar sonido" title="Sonido">♫</button>
+    </header>
+
+    <section class="game-card" aria-label="Juego de bloques">
+      <div class="heading-row">
+        <div><p class="eyebrow">PUZLE CLÁSICO</p><h1>Un bloque a la vez.</h1></div>
+        <button id="newGame" class="restart" title="Empezar una partida nueva" aria-label="Empezar partida nueva">↻</button>
+      </div>
+
+      <div class="score-row">
+        <div class="score-box"><span>PUNTUACIÓN</span><strong id="score">0</strong></div>
+        <div class="score-box best"><span>MEJOR</span><strong id="best">0</strong></div>
+      </div>
+
+      <div id="board" class="board" role="grid" aria-label="Tablero de 10 por 10"></div>
+      <p id="message" class="message" aria-live="polite">Coloca las piezas y completa filas o columnas.</p>
+
+      <div class="tray-wrap">
+        <div class="tray-label"><span>TUS PIEZAS</span><span class="hint">Arrastra o toca · 3 por turno</span></div>
+        <div id="tray" class="tray" aria-label="Piezas disponibles"></div>
+      </div>
+      <footer><span>PIENSA · COLOCA · LIMPIA</span><span>Una creación original</span></footer>
+    </section>
+    <section id="musicPanel" class="music-card" hidden aria-label="Playlist de Spotify">
+      <div class="music-heading"><div><p class="eyebrow">TU MÚSICA</p><h2>La playlist del juego</h2></div><button id="closeMusic" class="music-close" aria-label="Cerrar playlist">×</button></div>
+      <iframe id="spotifyFrame" title="Playlist de Spotify del usuario" src="" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <a class="spotify-link" href="https://open.spotify.com/playlist/78SNnVGMY8CGbUEzb0W3uL?si=oXT9GakZT56vV7l0fDhnhw" target="_blank" rel="noopener noreferrer">Abrir en Spotify ↗</a>
+    </section>
+    <p class="help">¿Te quedaste sin espacio? La partida termina cuando ninguna pieza cabe.</p>
+  </main>
+  <p id="sceneCredit" class="scene-credit">Puerto Rico</p>
+
+  <div id="gameOver" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="overTitle">
+    <div class="modal"><div class="trophy">✦</div><p class="eyebrow">FIN DE LA PARTIDA</p><h2 id="overTitle">¡Bien jugado!</h2><p class="final-score">Has conseguido <strong id="finalScore">0</strong> puntos.</p><button id="playAgain" class="primary">Jugar otra vez <span>→</span></button></div>
+  </div>
+  <div id="mainMenu" class="overlay menu-overlay" role="dialog" aria-modal="true" aria-labelledby="menuTitle">
+    <div class="modal menu-modal">
+      <div class="logo-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="eyebrow">EL PUZLE DE BLOQUES</p><h2 id="menuTitle">¡A jugar!</h2>
+      <p class="menu-copy">Coloca las piezas, completa líneas y consigue la mejor puntuación.</p>
+      <button id="startGame" class="primary">Jugar <span>→</span></button>
+      <button id="howTo" class="text-button" aria-expanded="false">¿Cómo se juega? <b>＋</b></button>
+      <p id="howToText" class="howto hidden">Arrastra una pieza al tablero de 10 × 10. Completa una fila o columna para despejarla. Las piezas no se pueden girar. La partida acaba cuando no queda ninguna jugada posible.</p>
+      <div class="menu-best">TU MEJOR PUNTUACIÓN <strong id="menuBest">0</strong></div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
